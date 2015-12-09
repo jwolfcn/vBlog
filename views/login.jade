@@ -1,0 +1,16 @@
+extends layout
+block content
+    h1= title
+    form(method="post" style="text-align: center;top: 30%;left: 50%;position: absolute;margin-left: -111px;")
+        label
+          |UserName:
+        input(type="text" name="name")
+        br
+        br
+        label
+          |Password:
+        input(type="password" name="password")
+        br
+        br
+        input(type="submit" value="login")
+

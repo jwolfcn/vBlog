@@ -1,0 +1,22 @@
+//
+   Created by SJ on 12/1/15.
+
+extends layout
+block content
+   h1= title
+
+
+   form(method="post" action="/post")
+      |Title:
+      br
+      input(type="text" name="title")
+      br
+      input(type="text" name="tag1")
+      input(type="text" name="tag2")
+      input(type="text" name="tag3")
+      br
+      |Content:
+      br
+      textarea(name="post" rows="20" cols="100")
+      br
+      input(type="submit" value="Post").btn.btn-info

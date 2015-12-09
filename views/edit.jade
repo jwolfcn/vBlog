@@ -1,0 +1,10 @@
+extends layout
+block content
+    form(method="post" action="")
+      h3 #{post.title}
+      br
+      |Content:
+      br
+      textarea(name="post" rows="20") #{post.post}
+      br
+      input(type="submit" value="save")

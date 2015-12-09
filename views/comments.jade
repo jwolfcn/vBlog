@@ -1,0 +1,31 @@
+each comment, i in post.comments
+  div.commentBlock
+    p !{comment.content}
+    a(href="#{comment.website}") #{comment.name}
+    small
+      |回复于 #{comment.time}
+form.form-horizontal(method="post")
+  if user
+    |Name:
+    input(type="text" name="name" value="#{user.name}" readOnly="readOnly")
+    br
+    |Email:
+    input(type="email" name="email" value="#{user.email}" readOnly="readOnly")
+    br
+    |NickName:
+    input(type="text" name="website" value="#{user.name}" readOnly="readOnly")
+  else
+    |Name:
+    input(type="text" name="name")
+    br
+    |Email:
+    input(type="email" name="email")
+    br
+    |NickName:
+    input(type="text" name="website" value="http://")
+    br
+  br
+  br
+  textarea(name="content" rows="5" cols="80")
+  br
+  input(type="submit" value="留言")

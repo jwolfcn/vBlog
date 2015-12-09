@@ -1,0 +1,30 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+    each post, i in posts
+      div
+        h2
+          a(href="u/#{post.name}/#{post.time.day}/#{post.title}") #{post.title}
+        p.info
+          |Author:
+          a(href="u/#{post.name}") #{post.name}
+          |  Date: #{post.time.minute}
+          |Tag:
+          each tag,i in post.tags
+            if tag
+              a.tag(href="/tags/#{tag}") #{tag}
+        div
+          !{post.post}
+        br
+        div.line
+    include paging
+    //p
+    //  h2
+    //    a(href="#") #{item.title}
+    //p.info
+    //  |Author:
+    //  a(href="#") #{item.title}
+    //  |Date: #{item.time.minute}
+    //p #{item.post}

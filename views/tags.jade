@@ -1,0 +1,4 @@
+extends layout
+block content
+each tag,i in posts
+  a.glyphicon-tag(href="/tags/#{tag}") #{tag}
