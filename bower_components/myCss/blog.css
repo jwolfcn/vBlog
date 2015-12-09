@@ -1,0 +1,68 @@
+.nav li{
+    float: right;
+    margin-right:15px;
+}
+/*.nav li:not(:last-child){*/
+    /*margin-right:15px;*/
+/*}*/
+.nav ul{
+    list-style-type: none;
+}
+article{
+    margin-top:60px;
+}
+.nav{
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+    position: fixed;
+    top: 0px;
+    background: rgba(188, 189, 189, 0.5);
+    width: 100%;
+    height: 44px;
+    font-size: 18px;
+    line-height: 44px;
+}
+form label{
+    width:75px;
+}
+form textarea{
+    width:100%;
+}
+.mainContent{
+    margin: 0 20px;
+}
+@media screen and (max-width: 750px) {
+    .mainContent img{
+        width:90%;
+    }
+    .nav{
+        padding-left: 0;
+        margin-bottom: 0;
+        list-style: none;
+        position: fixed;
+        top: 0px;
+        background: rgba(188, 189, 189, 0.5);
+        width: 100%;
+        height: 44px;
+        font-size: 18px;
+        line-height: 44px;
+    }
+
+}
+.line{
+    border-bottom: 1px solid #DCD9D9;
+}
+input[type="text"],input[type="number"],input[type="email"],input[type="password"] {
+    border:none;
+    border-bottom: 1px solid #aaa;
+    border-radius: 0px;
+}
+.commentPanel{
+    margin-top:40px;
+    margin-left:20px;
+}
+.commentBlock{
+    padding-bottom: 20px;
+    border-bottom: 1px dashed #aaa;
+}
