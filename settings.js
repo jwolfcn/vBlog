@@ -1,8 +1,8 @@
 module.exports = {
     cookieSecret: 'myblog',
-    db: 'blog',
-    host: 'localhost',
-    port: 27017,
+    db: 'jwolfblog',
+    host: 'jwolf:111111@ds035503.mongolab.com',
+    port: 35503,
     resave: true,
     saveUninitialized:false
 };
