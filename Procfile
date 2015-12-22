@@ -1,1 +1,1 @@
-web: supervisor ./www/bin
+web: supervisor ./bin/www
