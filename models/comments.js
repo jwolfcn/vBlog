@@ -16,14 +16,14 @@ Comment.prototype.save = function(callback) {
         title = this.title,
         comment = this.comment;
     //打开数据库
-    mongodb.open(function (err, db) {
+    pool.acquire(function (err, mongodb) {
         if (err) {
             return callback(err);
         }
         //读取 posts 集合
-        db.collection('posts', function (err, collection) {
+        mongodb.collection('posts', function (err, collection) {
             if (err) {
-                mongodb.close();
+                pool.release(mongodb);
                 return callback(err);
             }
             //通过用户名、时间及标题查找文档，并把一条留言对象添加到该文档的 comments 数组里
@@ -34,7 +34,7 @@ Comment.prototype.save = function(callback) {
             }, {
                 $push: {"comments": comment}
             } , function (err) {
-                mongodb.close();
+                pool.release(mongodb);
                 if (err) {
                     return callback(err);
                 }

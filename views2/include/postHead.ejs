@@ -1,0 +1,40 @@
+<div class="row">
+    <div class="group1 col-sm-6 col-md-6">
+        &nbsp
+        <% var flag = 1 %>
+        <% if (user && (user.name != post.name)) { %>
+        <% if ((post.reprint_info.reprint_from != undefined) && (user.name == post.reprint_info.reprint_from.name)) { %>
+        <% flag = 0 %>
+        <% } %>
+        <% if ((post.reprint_info.reprint_to != undefined)) { %>
+        <% post.reprint_info.reprint_to.forEach(function (reprint_to, index) { %>
+        <% if (user.name == reprint_to.name) { %>
+        <% flag = 0 %>
+        <% } %>
+        <% }) %>
+        <% } %>
+        <% } else { %>
+        <% flag = 0 %>
+        <% } %>
+        <% if (flag) { %>
+        <span class="glyphicon glyphicon-share-alt"></span> <a href="/reprint/<%= post.name %>/<%= post.time.day %>/<%= post.title %>">Forward</a>
+        <% } %>
+        <!--<span class="glyphicon glyphicon-folder-open"></span>&nbsp  -->
+        <img src="<%= post.head %>" class="img-circle"  style="width: 18px;height:18px;float: left;margin-right: 10px;box-shadow: 0px 1px 4px #888;"/>
+        &nbsp
+        <a style="float:left;" href="/u/<%=post.name%>"><%=post.name%></a>
+        &nbsp
+    </div>
+    <div class="group2 col-sm-6 col-md-6">
+        <span class="glyphicon glyphicon-eye-open"></span> <%=post.pv%>&nbsp
+        <span class="glyphicon glyphicon-comment"></span> <a href="/p/<%=post._id%>#comments"><%= post.comments.length %></a>&nbsp
+        <span class="glyphicon glyphicon-share-alt"></span>
+        <% if (post.reprint_info.reprint_to) { %>
+        <%= post.reprint_info.reprint_to.length %>
+        <% } else { %>
+        <%= 0 %>
+        <% } %>
+        &nbsp
+        <span class="glyphicon glyphicon-time"></span> <%=post.time.minute%>
+    </div>
+</div>

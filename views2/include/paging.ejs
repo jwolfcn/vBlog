@@ -1,0 +1,12 @@
+<ul class="pager">
+    <% if (!isFirstPage){%>
+    <li class="previous">
+        <a href="?p=<%=(page-1)%>">← Previous</a>
+    </li>
+    <%}%>
+    <%if(!isLastPage){%>
+    <li class="next">
+        <a href="?p=<%=(page+1)%>">Next →</a>
+    </li>
+    <%}%>
+</ul>

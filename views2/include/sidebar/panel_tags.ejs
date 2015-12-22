@@ -1,0 +1,13 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4>Tags</h4>
+    </div>
+    <div class="panel-body">
+        <ul class="list-inline">
+            <% post.tags.forEach(function (tag, index) { %>
+            <li><a href="/tags/<%= tag %>" > <%= tag %></a></li>
+            <% }) %>
+
+        </ul>
+    </div>
+</div>

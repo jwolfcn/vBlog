@@ -1,0 +1,48 @@
+<%- include include/header %>
+<div id="body" class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <h1><%=title%></h1>
+            <% posts.forEach(function (post, index) { %>
+            <article>
+                <h2><a href="/p/<%=post._id%>"> <%=post.title%></a></h2>
+
+                <div class="row">
+                    <div class="group1 col-sm-6 col-md-6">
+                        <span class="glyphicon glyphicon-folder-open"></span>&nbsp  <a href="/u/<%=post.name%>"><%=post.name%></a>
+                        &nbsp&nbsp
+                    </div>
+                    <div class="group2 col-sm-6 col-md-6">
+                        <span class="glyphicon glyphicon-time"></span> <%=post.time.minute%>
+                    </div>
+                </div>
+
+                <hr>
+
+                <br />
+
+                <p class="lead"><%-post.post%></p>
+
+                <p class="text-right">
+                    <a href="/p/<%=post._id%>" class="text-right">
+                        continue reading...
+                    </a>
+                </p>
+
+                <hr>
+            </article>
+            <% }) %>
+
+        </div>
+        <div class="col-md-4">
+            <!-- Subscribe to my feed widget -->
+            <%- include include/sidebar/panel_subscribe.ejs %>
+            <%- include include/sidebar/panel_list.ejs %>
+            <%- include include/sidebar/panel_categories.ejs %>
+            <%- include include/sidebar/panel_recentComments.ejs %>
+            <!-- Other widgets -->
+        </div>
+    </div>
+</div>
+
+<%- include include/footer %>

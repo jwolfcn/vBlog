@@ -1,0 +1,86 @@
+<%- include include/header.ejs %>
+<div id="body" class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <% if(user&&user.name==post.name) { %>
+                <article>
+                <h2><a href="/p/<%=post._id%>"> <%=post.title%></a></h2>
+
+                <div class="row">
+                    <div class="group1 col-sm-6 col-md-6">
+                        <span class="glyphicon glyphicon-edit" ></span>  <a href="/edit/<%=post._id%>">Edit</a>
+                        &nbsp&nbsp
+                        <span class="glyphicon glyphicon-trash"></span>&nbsp<a href="/remove/<%=post.name%>/<%=post.time.day%>/<%=post.title%>">Remove</a>
+                        &nbsp&nbsp
+                    </div>
+                    <div class="group2 col-sm-6 col-md-6">
+                        <span class="glyphicon glyphicon-comment"></span> <a href="/p/<%=post._id%>#comments"><%= post.comments.length %></a>&nbsp
+                        <span class="glyphicon glyphicon-share-alt"></span>
+                        <% if (post.reprint_info.reprint_to) { %>
+                        <%= post.reprint_info.reprint_to.length %>
+                        <% } else { %>
+                        <%= 0 %>
+                        <% } %>
+                        &nbsp
+                        <span class="glyphicon glyphicon-time"></span> <%=post.time.minute%>
+                    </div>
+                </div>
+
+                <hr>
+
+                <img src="http://placehold.it/900x300" class="img-responsive">
+
+                <br />
+
+                <p class="lead"><%-post.post%></p>
+                <% if (post.reprint_info.reprint_from) { %>
+                    <a href="/u/<%= post.reprint_info.reprint_from.name %>/<%= post.reprint_info.reprint_from.day %>/<%= post.reprint_info.reprint_from.title %>">原文链接</a>
+                <% } %>
+                <ul class="pager">
+                    <li class="previous">
+                        <a href="/">← Back</a>
+                    </li>
+                </ul>
+
+                <hr>
+            </article>
+            <% }else {%>
+                <article>
+                <h2><a href="/p/<%=post._id%>>"> <%=post.title%></a></h2>
+
+                <%-include include/postHead.ejs%>
+
+                <hr>
+
+                <img src="http://placehold.it/900x300" class="img-responsive">
+
+                <br />
+
+                <p class="lead"><%-post.post%></p>
+
+                <ul class="pager">
+                    <li class="previous">
+                        <a href="/">← Back</a>
+                    </li>
+                </ul>
+
+                <hr>
+            </article>
+            <%}%>
+            <div id="comments">
+                <%- include include/comments.ejs %>
+
+            </div>
+        </div>
+        <div class="col-md-4">
+            <!-- Subscribe to my feed widget -->
+            <%- include include/sidebar/panel_subscribe.ejs %>
+            <%- include include/sidebar/panel_categories.ejs %>
+            <%- include include/sidebar/panel_recentComments.ejs %>
+            <%- include include/sidebar/panel_tags.ejs %>
+            <!-- Other widgets -->
+        </div>
+    </div>
+</div>
+
+<%- include include/footer %>

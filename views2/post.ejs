@@ -1,0 +1,91 @@
+<%- include include/header %>
+<script type="text/javascript" >
+    $(document).ready(function(){
+        $("#postBtn").click(function() {
+            var data = {
+                title:$("#title").val(),
+                tag1:$("#tag1").val(),
+                tag2:$("#tag2").val(),
+                tag3:$("#tag3").val(),
+                post:$("#post").val()
+            }
+            $.post("/post",data,function(result){
+                if(result.code){
+                    $(".alertText").text(result.message);
+                    $("#errorTip").show();
+                    setTimeout(function(){
+                        location.href = result.redirect;
+                    },1000)
+                }else{
+                    $(".alertText").text(result.message);
+                    $("#errorTip").show();
+                }
+            });
+        });
+
+    });
+
+</script>
+<div id="body" class="container">
+    <div class="container">
+        <h1>Post</h1>
+
+        <!--<form class="form-horizontal col-md-10" role="form" action="/upload" enctype='multipart/form-data'>-->
+            <!--<div class="form-group">-->
+                <!--<label for="banner" class="col-md-3">Banner</label>-->
+                <!--<div class="col-md-9">-->
+                    <!--<input id="banner" type="text" class="form-control" name="banner" >-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</form>-->
+
+        <div class="contact-form">
+            <form class="form-horizontal col-md-10" role="form" id="loginForm" method="post">
+
+                <div class="form-group">
+                    <label for="name" class="col-md-3">Title</label>
+                    <div class="col-md-9">
+                        <input id="title" type="text" class="form-control" name="title" placeholder="title">
+                    </div>
+                </div>
+                <!--<div class="form-group">-->
+                    <!--<label for="banner" class="col-md-3">Banner</label>-->
+                    <!--<div class="col-md-9">-->
+                        <!--<input id="banner" type="text" class="form-control" name="banner" >-->
+                    <!--</div>-->
+                <!--</div>-->
+
+                <div class="form-group">
+                    <label for="tag" class="col-md-3">Tag</label>
+                    <div class="col-md-3">
+                        <input id="tag1" type="text" class="form-control" name="tag1" placeholder="tag1">
+                    </div>
+                    <div class="col-md-3">
+                        <input id="tag2" type="text" class="form-control" name="tag2" placeholder="tag2">
+                    </div>
+                    <div class="col-md-3">
+                        <input id="tag3" type="text" class="form-control" name="tag3" placeholder="tag3">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="content" class="col-md-3">Content</label>
+                    <div class="col-md-9">
+                        <textarea id="post" type="content" class="form-control" name="post" rows="20"  cols="150"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-12 text-right">
+                        <a id="postBtn" class="btn btn-lg btn-primary">Post</a>
+                    </div>
+                </div>
+            </form>
+            <div class="col-md-2"></div>
+        </div>
+
+        <!-- contact form -->
+    </div>
+</div>
+
+<%- include include/footer %>

@@ -1,0 +1,12 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4>Categories</h4>
+    </div>
+    <ul class="list-group">
+        <li class="list-group-item"><a href="#">Signs</a></li>
+        <li class="list-group-item"><a href="#">Elements</a></li>
+        <li class="list-group-item"><a href="#">Planets</a></li>
+        <li class="list-group-item"><a href="#">Cusps</a></li>
+        <li class="list-group-item"><a href="#">Compatibility</a></li>
+    </ul>
+</div>

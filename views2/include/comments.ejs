@@ -1,0 +1,105 @@
+<!--<div class="well">-->
+
+    <!--<h4>Leave a comment</h4>-->
+
+    <!--<form role="form" class="clearfix">-->
+        <!--<%if(user){%>-->
+
+        <!--<div class="col-md-6 form-group">-->
+            <!--<label class="sr-only" for="name">Name</label>-->
+            <!--<input type="text" class="form-control" value="<%=user.name%>" readonly id="name" placeholder="Name">-->
+        <!--</div>-->
+
+        <!--<div class="col-md-6 form-group">-->
+            <!--<label class="sr-only" for="email">Email</label>-->
+            <!--<input type="email" class="form-control" value="<%=user.email%>" readonly id="email" placeholder="Email">-->
+        <!--</div>-->
+        <!--<div class="col-md-6 form-group">-->
+            <!--<label class="sr-only" for="website">Email</label>-->
+            <!--<input type="text" class="form-control" value="<%=user.name%>" readonly id="website" placeholder="Email">-->
+        <!--</div>-->
+
+        <!--<div class="col-md-12 form-group">-->
+            <!--<label class="sr-only" for="comment">Comment</label>-->
+            <!--<textarea class="form-control" id="comment"  placeholder="Comment"></textarea>-->
+        <!--</div>-->
+
+        <!--<div class="col-md-12 form-group text-right">-->
+            <!--<a id="commentBtn" class="btn btn-primary">Submit</a>-->
+        <!--</div>-->
+        <!--<%}else{%>-->
+        <!--<div class="col-md-6 form-group">-->
+            <!--<a href="/register">Register and give a comment</a>-->
+        <!--</div>-->
+        <!--<%}%>-->
+
+    <!--</form>-->
+<!--</div>-->
+<!--<script type="text/javascript" >-->
+    <!--$(document).ready(function(){-->
+        <!--$("#commentBtn").click(function() {-->
+            <!--var data = {-->
+                <!--name:$("#name").val(),-->
+                <!--email:$("#email").val(),-->
+                <!--website:$("#website").val(),-->
+                <!--content:$("#comment").val()-->
+            <!--}-->
+            <!--$.post(window.location.path,data,function(result){-->
+                <!--if(result.code){-->
+                    <!--$(".alertText").text(result.message);-->
+                    <!--$("#successTip").show();-->
+                    <!--if(result.redirect){-->
+                        <!--setTimeout(function(){-->
+                            <!--location.href = result.redirect;-->
+                        <!--},1000)-->
+                    <!--}-->
+                <!--}else{-->
+                    <!--$(".alertText").text(result.message);-->
+                    <!--$("#errorTip").show();-->
+                <!--}-->
+            <!--});-->
+        <!--});-->
+
+    <!--});-->
+<!--//    function pullComment(){-->
+<!--//-->
+<!--//    }-->
+
+<!--</script>-->
+<!--<ul id="comments" class="comments">-->
+    <!--<% post.comments.forEach(function(comment,i){%>-->
+    <!--<li class="comment">-->
+        <!--<div class="clearfix">-->
+            <!--<img src="<%= comment.head %>" class="img-circle"  style="width: 30px;height:30px;float: left;margin-right: 10px;box-shadow: 0px 1px 4px #888;"/>-->
+            <!--<h4 class="pull-left"><%=comment.name%></h4>-->
+            <!--<p class="pull-right"><%=comment.time%></p>-->
+        <!--</div>-->
+        <!--<p>-->
+            <!--<em><%-comment.content%></em>-->
+        <!--</p>-->
+    <!--</li>-->
+    <!--<%})%>-->
+<!--</ul>-->
+
+<div id="disqus_thread"></div>
+<script>
+    /**
+     * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    /*
+     var disqus_config = function () {
+     this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+     this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+     };
+     */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//jwolf.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>

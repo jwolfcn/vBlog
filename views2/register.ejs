@@ -1,0 +1,77 @@
+<%- include include/header %>
+<script type="text/javascript" >
+    $(document).ready(function(){
+        $("#registerBtn").click(function() {
+            var data = {
+                name:$("#name").val(),
+                password:$("#password").val(),
+                verify:$("#verify").val(),
+                email:$("#email").val()
+            }
+            $.post("/register",data,function(result){
+                if(result.code){
+                    $(".alertText").text(result.message);
+                    $("#successTip").show();
+                    setTimeout(function(){
+                        location.href = result.redirect;
+                    },1000)
+                }else{
+                    $(".alertText").text(result.message);
+                    $("#errorTip").show();
+                }
+            });
+        });
+
+    });
+
+</script>
+<div id="body" class="container">
+    <div class="container">
+        <h1>Register</h1>
+
+        <div class="contact-form">
+            <div class="col-md-4"></div>
+            <form class="form-horizontal col-md-4" role="form" id="loginForm" method="post">
+
+                <div class="form-group">
+                    <label for="name" class="col-md-3">Name</label>
+                    <div class="col-md-9">
+                        <input id="name" type="text" class="form-control" name="name" placeholder="Name">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password" class="col-md-3">Password</label>
+                    <div class="col-md-9">
+                        <input id="password" type="password" class="form-control" name="password" placeholder="password">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="verify" class="col-md-3">Verify</label>
+                    <div class="col-md-9">
+                        <input id="verify" type="password" class="form-control" name="verify" placeholder="password">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email" class="col-md-3">Email</label>
+                    <div class="col-md-9">
+                        <input id="email" type="email" class="form-control" name="email" placeholder="email">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-12 text-right">
+                        <a id="registerBtn" class="btn btn-lg btn-primary">Register</a>
+                    </div>
+                </div>
+            </form>
+            <div class="col-md-4"></div>
+        </div>
+
+        <!-- contact form -->
+    </div>
+</div>
+
+<%- include include/footer %>

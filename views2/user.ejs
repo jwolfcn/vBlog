@@ -1,0 +1,43 @@
+<%- include include/header %>
+<div id="body" class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <h1>Latest Posts</h1>
+            <% posts.forEach(function (post, index) { %>
+            <article>
+                <h2><a href="/p/<%=post._id%>"> <%=post.title%></a></h2>
+
+                <%- include include/postHead%>
+
+                <hr>
+
+                <img src="http://placehold.it/900x300" class="img-responsive">
+
+                <br />
+
+                <p class="lead"><%-post.post%></p>
+
+                <p class="text-right">
+                    <a href="/p/<%=post._id%>" class="text-right">
+                        continue reading...
+                    </a>
+                </p>
+
+                <hr>
+            </article>
+            <% }) %>
+
+            <%- include include/paging%>
+        </div>
+        <div class="col-md-4">
+            <!-- Subscribe to my feed widget -->
+            <%- include include/sidebar/panel_subscribe.ejs %>
+            <%- include include/sidebar/panel_list.ejs %>
+            <%- include include/sidebar/panel_categories.ejs %>
+            <%- include include/sidebar/panel_recentComments.ejs %>
+            <!-- Other widgets -->
+        </div>
+    </div>
+</div>
+
+<%- include include/footer %>

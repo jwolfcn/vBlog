@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+    <meta name="description" content="A Bootstrap Blog Template">
+    <meta name="author" content="J.Wolf">
+    <title>VBlog</title>
+    <!-- Bootstrap CSS file -->
+    <link href="/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="/myCss/blog2.css" rel="stylesheet" />
+    <!-- Jquery and Bootstrap Script files -->
+    <script src="/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" >
+        var languages = {
+            en:{
+                home:"Home",
+                archive:"Archive",
+                tags:"Tags",
+                upload:"Upload",
+                post:"Post",
+                logout:"Logout",
+                login:"Login",
+                register:"Register"
+            },
+            cn:{
+                home:"主页",
+                archive:"存档",
+                tags:"标签",
+                upload:"上传",
+                post:"发表",
+                logout:"注销",
+                login:"登录",
+                register:"注册"
+            }
+        };
+        var language = "en";
+        $(document).ready(function(){
+            var selected = window.location.pathname.split("/")[1];
+            if(selected){
+                $("nav li").removeClass("active");
+                $("nav li[path="+selected+"]").addClass("active");
+            }
+        });
+    </script>
+    <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script charset="utf-8" src="/KindEditor/kindeditor-min.js"></script>
+    <script charset="utf-8" src="/KindEditor/lang/zh_CN.js"></script>
+    <script>
+        var editor;
+        KindEditor.ready(function(K) {
+            editor = K.create('textarea[name="post"]', {
+                allowImageUpload : false,
+                afterBlur: function(){this.sync()}
+            });
+        });
+    </script>
+</head>
+<body>
+<!-- Header -->
+<div id="successTip"  class="alert alert-success" style="display: none";>
+    <strong>成功！</strong><div class="alertText"></div>
+</div>
+<div id="errorTip" class="alert alert-warning" style="display: none";>
+    <strong>警告！</strong><div class="alertText"></div>
+</div>
+<header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" role="banner">
+    <div class="container">
+        <div class="navbar-header">
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+                <span class="sr-only">Segi Uhome</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="../index.html" class="navbar-brand"><% if (user) { %><%=user.name%><%}else{%>J.Wolf<%}%></a>
+        </div>
+        <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+            <form class="navbar-form navbar-right" role="search" method="get" action="/search">
+                <div class="form-group">
+                    <input required="true" type="text" class="form-control" placeholder="Search" name="keyword">
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+            <ul class="nav navbar-nav">
+                <li path="" class="active"><a href="/">Home</a></li>
+                <!--<li path="archive"><a href="/archive">Archive</a></li>-->
+                <!--<li path="tags"><a href="/tags">Tags</a></li>-->
+                <% if (user) { %>
+                <!--<li path="upload"><a href="/upload">Upload</a></li>-->
+                <li path="post"><a href="/post">Post</a></li>
+                <li path="contact"><a href="/contact">Contact</a></li>
+                <li path="about"><a href="/about">About</a></li>
+                <li path="logout"><a href="/logout">Logout</a></li>
+                <% } else { %>
+                <li path="register"><a href="/register">Register</a></li>
+                <li path="login"><a href="/login">Login</a></li>
+                <% } %>
+                <li path="links"><a href="/links">Links</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
